@@ -25,12 +25,13 @@
 
     <nav id="barre_navigation">
         <div href="index.php" id="nav_presentation">Présentation</div>
-        <div >Suivi</div>
+        <div id="nav_suivi">Suivi</div>
         <div  id="nav_connexion" href="">Connexion</div>
     		<div  id="nav_inscription" href="">Inscription</div>
 
       <div></div>
     </nav>
+    <section id=section></section>
 
 	
   <footer id="mon_footer">
@@ -54,6 +55,7 @@
     <script src="JS/mesFonctions.js"></script>
     <script src="JS/dark_light.js"></script>
     <script src="JS/navigation.js"></script>
+    <script src="JS/ajax.js"></script>
 
   </body>
 </html>
