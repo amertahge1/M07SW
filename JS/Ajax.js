@@ -13,8 +13,9 @@ function suviAjax()
             document.getElementById("section").innerHTML=this.responseText;
             
             recupererdonnesDrone();
-           // recupererNombreDrone();
            
+
+            // clicker sur les images
            document.getElementById('donneesdrone').addEventListener('click', recupererNombreDrone );
            document.getElementById('donnesvol').addEventListener('click',recupererDonneesVols);
            document.getElementById('donnesutilisateur').addEventListener('click',recupererDonneesUtilisateurs);
@@ -28,7 +29,7 @@ function suviAjax()
 
 
 
-
+// recuperer toutes les donnes et les afficher 
 function recupererdonnesDrone()
 {
 
