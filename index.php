@@ -55,7 +55,7 @@
     <script src="JS/mesFonctions.js"></script>
     <script src="JS/dark_light.js"></script>
     <script src="JS/navigation.js"></script>
-    <script src="JS/ajax.js"></script>
+    <script src="JS/Ajax.js"></script>
 
   </body>
 </html>

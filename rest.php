@@ -20,7 +20,46 @@ if(isset($_SERVER['PATH_INFO']))
        $cheminURL_tableau= explode("/",$cheminURL);
        
 }
-if ($req_type='POST'){
+if ($req_type=='GET'){
+                // print_r($cheminURL_tableau[1]);      
+if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='nbdrone'){
+        $req="SELECT COUNT(iddrone) as valeur FROM drone";
+        $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $res->execute(NULL);
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+        $data_json = json_encode($data[0]);
+        print_r($data[0]["valeur"]);
+}
+
+
+else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='nbutilisateur'){
+        $req="SELECT COUNT(idutilisateur) as valeur FROM utilisateur";
+        $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $res->execute(NULL);
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+        $data_json = json_encode($data[0]);
+        print_r($data[0]["valeur"]);
+}
+
+
+        
+else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='nbvol'){
+                $req="SELECT COUNT(idvol) as valeur FROM vol";
+                $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $res->execute(NULL);
+                $data = $res->fetchAll(PDO::FETCH_ASSOC);
+                $data_json = json_encode($data[0]);
+                print_r($data[0]["valeur"]);
+        }
+}
+
+
+
+                
+        
+
+
+if ($req_type=='POST'){
 
        
 
@@ -62,6 +101,7 @@ if ($req_type='POST'){
                 //}
                 $userId = $data[0]['idutilisateur'];
            }
+           
            
 
            $req="SELECT iddrone FROM  drone WHERE refDrone=(?) ;";   
@@ -129,14 +169,15 @@ if ($req_type='POST'){
         $agx = $etat['agx'];
         $agy = $etat['agy'];
         $agz = $etat['agz'];
-                $req = "INSERT INTO etat (idvol,pitch,roll,yaw,vgx,vgy,vgz,templ,temph,tof,h,bat,baro,time,agx,agy,agz) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                $reqpreparer=$BDD->prepare($req);
-                $tableauDeDonnees=array($idvol,$pitch,$roll,$yaw,$vgx,$vgy,$vgz,$templ,$temph,$tof,$h,$bat,$baro,$time,$agx,$agy,$agz);
-                $reqpreparer->execute($tableauDeDonnees);
-                print_r("Un état a été créer\n");
+        $req = "INSERT INTO etat (idvol,pitch,roll,yaw,vgx,vgy,vgz,templ,temph,tof,h,bat,baro,time,agx,agy,agz) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $reqpreparer=$BDD->prepare($req);
+        $tableauDeDonnees=array($idvol,$pitch,$roll,$yaw,$vgx,$vgy,$vgz,$templ,$temph,$tof,$h,$bat,$baro,$time,$agx,$agy,$agz);
+        $reqpreparer->execute($tableauDeDonnees);
+        print_r("Un état a été créer\n");
         }
 
 }
+
 
 
 ?>
