@@ -51,6 +51,32 @@ else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='nbvol'){
                 $data_json = json_encode($data[0]);
                 print_r($data[0]["valeur"]);
         }
+
+        else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='drone'){
+                $req="SELECT * FROM drone" ;
+                $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $res->execute(NULL);
+                $data = $res->fetchAll(PDO::FETCH_ASSOC);
+                $data_json = json_encode($data);
+                print_r($data_json);
+        }
+        else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='vol'){
+                $req="SELECT * FROM vol" ;
+                $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $res->execute(NULL);
+                $data = $res->fetchAll(PDO::FETCH_ASSOC);
+                $data_json = json_encode($data);
+                print_r($data_json);
+        }
+        
+        else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='utilisateur'){
+                $req="SELECT * FROM utilisateur" ;
+                $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $res->execute(NULL);
+                $data = $res->fetchAll(PDO::FETCH_ASSOC);
+                $data_json = json_encode($data);
+                print_r($data_json);
+        }
 }
 
 
