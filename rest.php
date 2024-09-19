@@ -77,6 +77,31 @@ else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='nbvol'){
                 $data_json = json_encode($data);
                 print_r($data_json);
         }
+
+        else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='etat'){
+                if(isset($cheminURL_tableau[2])){
+                        if(isset($cheminURL_tableau[3])){
+                        $req="SELECT idetat,h FROM etat WHERE idvol=" . $cheminURL_tableau[2] ;
+                        // print_r("\n\n".$req."\n\n");
+                        $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                        $res->execute(NULL);
+                        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+                        $data_json = json_encode($data);
+                        print_r($data_json);
+                
+                        }
+                }
+                }
+        
+        // else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='idvol'){
+        //         $req="SELECT * FROM vol" ;
+        //         $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        //         $res->execute(NULL);
+        //         $data = $res->fetchAll(PDO::FETCH_ASSOC);
+        //         $data_json = json_encode($data);
+        //         print_r($data_json);
+        // }
+       
 }
 
 

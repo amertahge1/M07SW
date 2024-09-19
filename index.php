@@ -31,9 +31,13 @@
 
       <div></div>
     </nav>
-    <section id=section></section>
+    <section id=section>
+ 
 
-	
+   
+
+</section>
+
   <footer id="mon_footer">
     <div>
         <h1>Les drones :</h1>
@@ -50,12 +54,14 @@
         <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Tout sur les Grid CSS</a>
       </div>
     </footer>
-
+    
     <script src="JS/cookie.js"></script>
     <script src="JS/mesFonctions.js"></script>
     <script src="JS/dark_light.js"></script>
     <script src="JS/navigation.js"></script>
     <script src="JS/Ajax.js"></script>
+    <script src="JS/graphe.js"></script>
+    <script src="JS/chart.js"></script>
 
   </body>
 </html>
