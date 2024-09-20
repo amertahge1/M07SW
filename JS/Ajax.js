@@ -2,7 +2,7 @@
 document.getElementById("nav_suivi").addEventListener('click', suviAjax);
 //document.getElementById("nav_connexion").addEventListener('click', suviAjax);
 //document.getElementById("nav_presentation").addEventListener('click', suviAjax);
-
+ document.getElementById("btn").addEventListener('click', suviAjax);
 
 function suviAjax()
 {
@@ -21,6 +21,8 @@ function suviAjax()
            document.getElementById('donnesvol').addEventListener('click',recupererDonneesVols);
            document.getElementById('donnesutilisateur').addEventListener('click',recupererDonneesUtilisateurs);
         //    document.getElementsByClassName('affichergraphe').addEventListener('click',AfficherPageGraphe);
+       
+          
            
           
            
@@ -43,14 +45,12 @@ function AfficherPageGraphe()
             //document.getElementById("section2").innerHTML=this.responseText;
       
             recuperermesure(idvol);
-          
+            
            
         }
     };
     xhttp.open("GET", "graphe.html", true);
-    xhttp.send();
- 
-        
+    xhttp.send();  
 }
 
 
@@ -113,7 +113,21 @@ function recupererNombreDrone()
     
         
 }
+function DonnéesGraphe()
+{
+     xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
 
+      
+      document.getElementById("section").innerHTML = this.responseText;         
+    }
+  };
+
+  xhttp.open("GET", "graphe.html");
+  xhttp.send();
+
+}
 function  recupererDonneesVols()
 {
 
@@ -130,7 +144,6 @@ function  recupererDonneesVols()
             table+="<td>"+donneesVol.dateVol+"</td>";
             table+="<td>"+donneesVol.iddrone+"</td>";
             table+="<td><button class='affichergraphe' data-idvol='"+donneesVol.idvol+"'>Graphe</td>";
-            
             table+="</tr>";
 
         }
@@ -143,12 +156,6 @@ function  recupererDonneesVols()
              bouttonsgraph[i].addEventListener('click',AfficherPageGraphe);
         }
       
-     
-        
-        
-
-        //recuperermesure();
-        //Graph(x,y1,y2);
     }
     }
     xhttp.open("GET", "http://172.20.21.202/~mertah/M07SW/rest.php/vol");
