@@ -11,5 +11,3 @@
 <div class="statistique" id="donnesutilisateur">
               <p class="statistique_icone"><img src="./icones/man.svg"></p>
               <p class="statistique_valeur"><span id=nbutilisateur >test</span></p></a></div>
-              
-

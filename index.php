@@ -28,6 +28,7 @@
         <div id="nav_suivi">Suivi</div>
         <div  id="nav_connexion" href="">Connexion</div>
     		<div  id="nav_inscription" href="">Inscription</div>
+        <div  id="nav_trajectoire" href="">Trajectoire</div>
 
       <div></div>
     </nav>
@@ -60,6 +61,7 @@
     <script src="JS/dark_light.js"></script>
     <script src="JS/navigation.js"></script>
     <script src="JS/Ajax.js"></script>
+    <script src="JS/trajectoire.js"></script>
     <script src="JS/graphe.js"></script>
     <script src="JS/chart.js"></script>
 

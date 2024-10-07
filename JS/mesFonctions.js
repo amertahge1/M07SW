@@ -211,8 +211,8 @@ var h1_header = document.getElementById("h1_header");
 h1_header.addEventListener('mouseover', changerTitre);
 
 // Evenement sur le paragraphe du footer
-var p_footer = document.getElementById("p_footer");
-p_footer.addEventListener('dblclick', visiteurs);
+//var p_footer = document.getElementById("p_footer");
+//p_footer.addEventListener('dblclick', visiteurs);
 
 // Evenement sur les images du footer
 var img_orange = document.getElementById("theme_orange");

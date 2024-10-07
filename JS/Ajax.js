@@ -2,7 +2,7 @@
 document.getElementById("nav_suivi").addEventListener('click', suviAjax);
 //document.getElementById("nav_connexion").addEventListener('click', suviAjax);
 //document.getElementById("nav_presentation").addEventListener('click', suviAjax);
- document.getElementById("btn").addEventListener('click', suviAjax);
+//  document.getElementById("btn").addEventListener('click', DonnéesGraphe);
 
 function suviAjax()
 {
@@ -21,7 +21,7 @@ function suviAjax()
            document.getElementById('donnesvol').addEventListener('click',recupererDonneesVols);
            document.getElementById('donnesutilisateur').addEventListener('click',recupererDonneesUtilisateurs);
         //    document.getElementsByClassName('affichergraphe').addEventListener('click',AfficherPageGraphe);
-       
+           
           
            
           
@@ -32,6 +32,9 @@ function suviAjax()
     xhttp.send();
 
 }
+
+
+
 
 
 function AfficherPageGraphe()

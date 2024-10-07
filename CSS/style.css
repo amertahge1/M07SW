@@ -136,3 +136,7 @@ table, th,td {
   position: right;
 
 	} */
+
+	.barre_navigation{
+		display:flex;
+	}
