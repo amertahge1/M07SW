@@ -137,6 +137,14 @@ table, th,td {
 
 	} */
 
-	.barre_navigation{
+	.trajectoire{
 		display:flex;
+	}
+
+	#afficher_form
+	{
+		display:none;
+	}
+	#liste_trajectoire{
+		display:none;
 	}

@@ -1,6 +1,8 @@
 
 document.getElementById("nav_trajectoire").addEventListener('click',trajectoire);
 
+
+
 function trajectoire()
 {
     //document.getElementById("nav_trajectoire").addEventListener('click',trajectoire);
@@ -42,11 +44,36 @@ function afficherplan()
             var img = new Image();
             img.src = './plan.png';
             img.onload = function () {
-                ctx.drawImage(img, 0, 0);
+                ctx.drawImage(img, 0, 0);  
+                ctx.beginPath(); // Start a new path
+                ctx.moveTo(30, 50); // Move the pen to (30, 50)
+                ctx.lineTo(150, 100); // Draw a line to (150, 100)
+                ctx.stroke(); // Render the path
+                ctx.moveTo(50, 30); // Move the pen to (30, 50)
+        ctx.lineTo(100, 150); // Draw a line to (150, 100)
+        ctx.stroke(); // Render the path
         }
 
+        
+        document.getElementById("nav_creer").addEventListener('click',creer);
+        document.getElementById("nav_charger").addEventListener('click',charger);
      }
     }
 xhttp.open("GET", "trajectoire.html", true);
 xhttp.send();
+}
+
+function creer()
+{
+
+    
+   document.getElementById("liste_trajectoire").style.display="none";
+   document.getElementById("afficher_form").style.display="block";
+}
+
+function charger()
+{
+
+    document.getElementById("afficher_form").style.display="none";
+    document.getElementById("liste_trajectoire").style.display="block"; 
 }
