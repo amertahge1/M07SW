@@ -148,3 +148,9 @@ table, th,td {
 	#liste_trajectoire{
 		display:none;
 	}
+
+	#afficher{
+		border:1px solid black;
+		height: auto;
+		width: 100%;
+	}
