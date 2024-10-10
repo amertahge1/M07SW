@@ -41,7 +41,7 @@ function afficherplan()
 
     document.getElementById("btn_tracer").addEventListener('click',tracer);
    
-    document.getElementById("btn_entregistrer").addEventListener('click',enregistrer);
+    document.getElementById("btn_entregistrer").addEventListener('click',enregistrerTrajectoire);
     document.getElementById("btn_effacer").addEventListener('click',effacer);
 
     document.getElementById("nav_creer").addEventListener('click',creer);
@@ -80,9 +80,27 @@ function tracer () {
     }
 }
 
-function enregistrer(){
-    console.log("ok");
+function enregistrerTrajectoire(){
+//    console.log("ok");
+
+if (afficher.innerHTML==0)
+{
+    //console.log("vide");
+    alert("vide"); 
 }
+else 
+{
+    //console.log("non vide"); 
+    alert("non vide");
+    JSON=afficher.innerHTML = `start ${x} ${y}<br>command <br>takeoff`; 
+    
+
+}
+
+}
+
+
+
 function effacer(){
     //console.log("ok");
     canvas = document.getElementById('canvas_trajectoire');
