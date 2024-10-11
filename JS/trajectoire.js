@@ -67,7 +67,7 @@ function tracer () {
         ctx.lineTo(x-5,y+5);
         ctx.moveTo(x, y);
         ctx.stroke();
-        afficher.innerHTML = `start ${x} ${y}<br>command <br>takeoff`;
+        document.getElementById("afficher").innerHTML = `<div class="afficher">start ${x} ${y}</div><div class="afficher">command </div><div class="afficher">takeoff</div>`;
         isStartingPosition=true;
     }else{
         ctx.lineTo(x, y);
@@ -76,28 +76,49 @@ function tracer () {
         ctx.moveTo(x+5,y-5);
         ctx.lineTo(x-5,y+5);
         ctx.stroke();
-        afficher.innerHTML += `<br>go ${x} ${y} 0 50`;
+        document.getElementById("afficher").innerHTML += `<div class="afficher">go ${x} ${y} 0 50</div>`;
     }
 }
 
 function enregistrerTrajectoire(){
 //    console.log("ok");
-
-if (afficher.innerHTML==0)
+    titre=document.getElementById("titre").value
+    tracer();
+console.log(titre)
+if (!titre)
 {
     //console.log("vide");
-    alert("vide"); 
-}
-else 
-{
-    //console.log("non vide"); 
-    alert("non vide");
-    JSON=afficher.innerHTML = `start ${x} ${y}<br>command <br>takeoff`; 
+    return alert("vide"); 
     
+}
+const datalist = document.getElementsByClassName("afficher");
+// console.log(datalist)
+let CommandJSON =`{"titre":"${titre},
+"trajectoire:{`;
+for (let i=0; i < datalist.length;i++){
+// console.log("loop exécuté" + i)
+    CommandJSON+=`"${i}": "${datalist.item(i).innerText}",`
+}
+CommandJSON = CommandJSON.substring(0, CommandJSON.length - 1);
+CommandJSON += "}}"
+console.log(CommandJSON)
+
+const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var reponse = this.responseText;
+            console.log(reponse);
+        }
+
+ 
+    };
+
+    xhttp.open("POST","http://172.20.21.202/~mertah/M07SW/rest.php/trajectoire");
+    xhttp.send(CommandJSON);
 
 }
 
-}
+
 
 
 
@@ -111,6 +132,7 @@ function effacer(){
     img.onload = function () {
         ctx.drawImage(img, 0, 0); 
     } 
+    
 
 
     
