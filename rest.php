@@ -93,6 +93,9 @@ else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='nbvol'){
                 }
                 }
         
+                
+                
+        
         // else if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='idvol'){
         //         $req="SELECT * FROM vol" ;
         //         $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
@@ -115,10 +118,14 @@ if ($req_type=='POST'){
        
 
         $donneesVolJSON=file_get_contents("php://input");
+        // print_r("\n\n\n". $donneesVolJSON . "\n\n\n");
         $donneesVolAssoc=json_decode($donneesVolJSON,true);
-        print_r($donneesVolAssoc);
+        // print_r("\n\n\n". $donneesVolAssoc . "\n\n\n");
+        // print_r($donneesVolAssoc);
+        
+
+        if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='vol'){
         print_r($donneesVolAssoc["nom"]);
-     
             $req="SELECT idutilisateur FROM  utilisateur WHERE nom=? ;";   
             $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $res->execute(array($donneesVolAssoc["nom"]));
@@ -152,6 +159,7 @@ if ($req_type=='POST'){
                 //}
                 $userId = $data[0]['idutilisateur'];
            }
+           
            
            
 
@@ -226,6 +234,41 @@ if ($req_type=='POST'){
         $reqpreparer->execute($tableauDeDonnees);
         print_r("Un état a été créer\n");
         }
+
+        }
+        if(isset($cheminURL_tableau[1])&& $cheminURL_tableau[1]=='trajectoire'){
+
+      // echo "PHP POST - trajectoire !";
+       print_r($donneesVolAssoc);
+                
+       $titreTrajectoire=$donneesVolAssoc['titre']; 
+       $Trajectoire=$donneesVolAssoc['trajectoire']; 
+
+       $req="SELECT idlisteTrajectoire FROM  listeTrajectoire WHERE titre=? ;";   
+        $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $res->execute(array($titreTrajectoire));
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+       print_r($data);
+//        $idlistetraj=$data[0]['idlisteTrajectoire'];
+
+                if(!$data)
+                {
+                        $req="INSERT INTO listeTrajectoire (titre,type) VALUES (?,?)";  
+                        $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                        $res->execute(array($titreTrajectoire,"Manuel"));
+                        $idlistetraj=$pdo->lastInsertId();
+                        
+                        foreach ($Trajectoire as $command) {                
+                                $req="INSERT INTO trajectoire (idlisteTrajectoire,commande) VALUES (?,?)";  
+                                $res=$pdo->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                                $res->execute(array($idlistetraj,$command));
+                        
+
+                }
+
+        }
+        }
+
 
 }
 

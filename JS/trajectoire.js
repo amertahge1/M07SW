@@ -93,8 +93,8 @@ if (!titre)
 }
 const datalist = document.getElementsByClassName("afficher");
 // console.log(datalist)
-let CommandJSON =`{"titre":"${titre},
-"trajectoire:{`;
+let CommandJSON =`{"titre":"${titre}",
+"trajectoire":{`;
 for (let i=0; i < datalist.length;i++){
 // console.log("loop exécuté" + i)
     CommandJSON+=`"${i}": "${datalist.item(i).innerText}",`
@@ -114,6 +114,9 @@ const xhttp = new XMLHttpRequest();
     };
 
     xhttp.open("POST","http://172.20.21.202/~mertah/M07SW/rest.php/trajectoire");
+    // ajouter que le "Content-Type" est du json 
+    
+    // xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(CommandJSON);
 
 }
