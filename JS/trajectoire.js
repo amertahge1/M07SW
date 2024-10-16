@@ -151,6 +151,42 @@ function creer()
 function charger()
 {
 
+    const tab = document.getElementsByClassName("table");
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let reponseAPI=JSON.parse(this.responseText);
+            var table="<div ><table class='tableau_statistique '><tr class='centrer'><th>ID</th><th>Titre</th><th>Action</th></tr>";
+            for(let i=0;i<reponseAPI.length;i++){
+            table+="<tr class='centrer'>";
+                let donneesVol=reponseAPI[i];
+                table+="<td>"+donneesVol.idlisteTrajectoire+"</td>";
+                table+="<td>"+donneesVol.titre+"</td>";
+                //table+="<td><button class='affichergraphe' data-idlisteTrajectoire='"+donneesVol.idlisteTrajectoire+"'>Graphe</td>";
+               // table+="<td>" <class='icone' data-idlisteTrajectoire='"+donneesVol.idlisteTrajectoire+"' img src="./icones/itineraire2.png"></td>
+               table += "<td class='icone2' data-idlisteTrajectoire='" + donneesVol.idlisteTrajectoire + "'><img src='./icones/corbeille2.png' alt='Itinéraire'></td>";
+               table += "<td class='icone' data-idlisteTrajectoire='" + donneesVol.idlisteTrajectoire + "'><img src='./icones/itineraire2.png' alt='Itinéraire'></td>";
+                
+
+                //table+="</tr>";
+    
+            }
+            table+="</table></div>";
+            document.getElementById("liste_trajectoire").innerHTML=table;
+        }
     document.getElementById("afficher_form").style.display="none";
     document.getElementById("liste_trajectoire").style.display="block"; 
+    //document.getElementById('icone2').addEventListener('click',charger);
+    
+    console.log("ok");
+   // document.getElementById("liste").innerHTML='titre';
+    
+ 
+    };
+
+   
+    xhttp.open("GET","http://172.20.21.202/~mertah/M07SW/rest.php/trajectoire");
+    xhttp.send();
 }
+
+
